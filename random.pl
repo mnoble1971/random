@@ -16,7 +16,6 @@ sub ask {
  
 sub create_random {
   $random_number=int(rand($range)) + 1;
-  print "--------------------- $random_number   \n";
 }
 
 sub increment_random {
@@ -24,6 +23,7 @@ sub increment_random {
 }
 
 create_random;
+print "--------------------- $random_number   \n";
 
 sub guess_loop {
   until ($guess_count eq 0) {
@@ -39,14 +39,14 @@ sub guess_loop {
     print "guesses left: $guess_count\n";
   }
     print "Sorry Out of guesses\n";
-    return "out";
+    exit 1;
   }
 my $pick=guess_loop();
-for (;;) {
+while (1) {
 if ($pick =~ /good/) {
   increment_random;
   create_random;
-  ask;
+  print "--------------------- $random_number   \n";
   guess_loop;
   } else {
   print "-done \n";
